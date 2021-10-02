@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Welcome Grand Hotel</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1 style="color: dimgray;">Add Table</h1>
+ 
+ <form action="#" th:action="@{/hotel/table/add}" th:object="${table}"
+  method="post">
+    <fieldset>
+        <table>
+            <thead>
+                <tr>
+                    <th> Table No</th>
+                    <th> Seating Count</th>
+                </tr>
+            </thead>
+            <tbody> 
+                    <td><input type="text" th:field="${table.tableNo}" /></td>
+                    <td><input type="text" th:field="${table.seatingCount}" /></td>
+            </tbody>
+        </table>
+        <input type="submit" id="submitButton" th:value="Save">
+    </fieldset>
+</form>
+</body>
+</html>

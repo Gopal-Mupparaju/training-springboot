@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Welcome Grand Hotel</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p><h1 style="color: dimgrey;"> Welcome to Grand Hotel</h1></p>
+    <p><a th:href="@{'/hotel/tables'}">view tables</a> &nbsp;| &nbsp; <a th:href="@{'/hotel/add-table'}">Add table</a></p>
+	
+    <h1 style="color: dimgray;">Tables Info</h1>
+    <table>
+    <thead>
+        <tr>
+            <th> Table Id </th>
+            <th> Table No </th>
+            <th> Seating count </th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${tables.empty}">
+            <td colspan="2"> No Tables Available </td>
+        </tr>
+        <tr th:each="table : ${tables}" style="border: thin;">
+            <td><span th:text="${table.tableId}"> Table Id </span></td>
+            <td><span th:text="${table.tableNo}"> Table No </span></td>
+            <td><span th:text="${table.seatingCount}"> Seating Count </span></td>
+            <td>     
+            <form th:action='@{/hotel/table/delete/{tableId}(tableId=${table.tableId})}' th:method="delete">
+               <input type="submit" th:value="Delete" />
+            </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
